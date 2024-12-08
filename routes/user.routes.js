@@ -94,8 +94,8 @@ router.post('/login',
 
         // res.json({ token })
         res.cookie('token', token);//it is used to store token as cookie:
-        res.send("logged in")
+        // res.send("logged in")
         console.log("logged in")
-        // res.render('Home')
+        res.render('Home')
     })
 module.exports = router; 
