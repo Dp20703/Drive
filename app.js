@@ -5,10 +5,13 @@ const dotenv = require('dotenv');//used to store the db connection url :
 dotenv.config();
 const connectToDB = require("./config/db")//connection to db:
 connectToDB();
+const cookieParser = require("cookie-parser");//Used to store cookies:
 const userRouter = require('./routes/user.routes');//Required the userRoutes:
+
 
 app.set('view engine', 'ejs');
 //built-in middlewares:
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

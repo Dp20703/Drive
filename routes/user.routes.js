@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
-const { body, validationResult } = require('express-validator');
-const userModel = require('../models/user.model');
-const bcrypt = require('bcrypt');
+const router = express.Router();//used to create routes:
+const { body, validationResult } = require('express-validator');//import to set validation on inputs:
+const userModel = require('../models/user.model');//import userModel from user.model:
+const bcrypt = require('bcrypt');//Used to create hashPassword:
+const jwt = require('jsonwebtoken');//Used to store token of logged user:
 
 
 
@@ -37,15 +38,64 @@ router.post('/register',
             email: email,
             password: hashPasword
         })
-        res.json(newUser);
-        console.log("new user created\n", newUser)
-
-
-        // else {
-        //     console.log(req.body)
-        //     res.send("User Regsitered Successfully")
-        // }
-
+        // res.json(newUser);
+        console.log("new user created\n", newUser);
+        res.redirect('login');
     })
 
-module.exports = router;
+//login routes:
+router.get('/login', (req, res) => {
+    res.render('login');
+})
+
+router.post('/login',
+    body('username').trim().isLength({ min: 3 }),
+    body('password').trim().isLength({ min: 5 }),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: "invalid data"
+            })
+        }
+
+        const { username, password } = req.body;
+        // console.log(req.body)
+
+        const user = await userModel.findOne({ username: username });//find the same user by username
+        // console.log(user.password)
+
+        //if user is not found:
+        if (!user) {
+            return res.status(400).json({
+                message: "username or password is incorrect"
+            })
+        }
+
+        //After finding user ,match password with saved hashPassword:
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        //if not password mathced:
+        if (!isMatch) {
+            return res.status(400).json({
+                message: 'username or password is incorrect'
+            })
+        }
+
+        //if username&password is correct:
+
+        //twt token is used to create token:
+        const token = jwt.sign({
+            userId: user._id,
+            email: user.email,
+            username: user.username
+        }, process.env.JWT_SECRET);
+
+        // res.json({ token })
+        res.cookie('token', token);//it is used to store token as cookie:
+        res.send("logged in")
+        console.log("logged in")
+        // res.render('Home')
+    })
+module.exports = router; 
