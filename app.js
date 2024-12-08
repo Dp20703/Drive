@@ -1,6 +1,10 @@
 const express = require("express")
 const app = express()
 const port = 3000
+const dotenv = require('dotenv');//used to store the db connection url :
+dotenv.config();
+const connectToDB = require("./config/db")//connection to db:
+connectToDB();
 const userRouter = require('./routes/user.routes');//Required the userRoutes:
 
 app.set('view engine', 'ejs');
