@@ -5,7 +5,8 @@ const Firebase = require('./firebase.config');
 
 const storage = firebaseStorage({
     credentials: Firebase.credential.cert(serviceAccount),
-    bucketName:'name'
+    bucketName: 'name',
+    unique: true
 })
 
 const upload = multer({
