@@ -1,0 +1,37 @@
+[
+    {
+        "_id": "ObjectId('671b844cc420bbc870a41df1')",
+        "path": "john-doe-9abCXYz2Lkm-unsplash123a456b78c.jpg",
+        "originalname": "john-doe-9abCXYz2Lkm-unsplash.jpg",
+        "user": "671b68777263b467085e086c",
+        "__v": 0
+    },
+    {
+        "_id": "ObjectId('671b844cc420bbc870a41df2')",
+        "path": "jane-smith-Ax9YZPz3Klp-unsplash321b654c89d.jpg",
+        "originalname": "jane-smith-Ax9YZPz3Klp-unsplash.jpg",
+        "user": "671b68777263b467085e086d",
+        "__v": 0
+    },
+    {
+        "_id": "ObjectId('671b844cc420bbc870a41df3')",
+        "path": "alex-jones-7p9QWXYt4Ulm-unsplash456c789d012.jpg",
+        "originalname": "alex-jones-7p9QWXYt4Ulm-unsplash.jpg",
+        "user": "671b68777263b467085e086e",
+        "__v": 0
+    },
+    {
+        "_id": "ObjectId('671b844cc420bbc870a41df4')",
+        "path": "sarah-lee-3MnTXYa5Pkln-unsplash567d890e123.jpg",
+        "originalname": "sarah-lee-3MnTXYa5Pkln-unsplash.jpg",
+        "user": "671b68777263b467085e086f",
+        "__v": 0
+    },
+    {
+        "_id": "ObjectId('671b844cc420bbc870a41df5')",
+        "path": "mike-ross-5TnVWZa6Oplm-unsplash678e901f234.jpg",
+        "originalname": "mike-ross-5TnVWZa6Oplm-unsplash.jpg",
+        "user": "671b68777263b467085e0870",
+        "__v": 0
+    }
+]

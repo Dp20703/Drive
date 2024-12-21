@@ -1,4 +1,3 @@
-const { original } = require('@reduxjs/toolkit');
 const mongoose = require('mongoose');
 
 const fileSchema = new mongoose.Schema({
@@ -13,7 +12,7 @@ const fileSchema = new mongoose.Schema({
     users: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
-        required: [true, "User is required"]
+        // required: [true, "User is required"]
     }
 })
 const file = mongoose.model('file', fileSchema);
